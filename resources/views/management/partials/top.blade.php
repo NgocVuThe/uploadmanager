@@ -10,8 +10,9 @@
                             <button class="btn btn-primary" type="submit" style="margin-left: 5px;">Search</button>
                         </form>
                    </div>
-                   <div class="col-md-2 text-center">
-                       <p class="current_user"><i class="fa fa-user"></i> Hello Admin</p>
+                   <div class="col-md-2 text-center current_user">
+                   <a href=""><i class="fa fa-user"></i> {{ $user->name }}</a>
+                   <a href="{{ route('get_logout') }}">Logout</a>
                    </div>
                </div>
             </div>

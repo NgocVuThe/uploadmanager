@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUploadsTable extends Migration
+class CreateFolderUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUploadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uploads', function (Blueprint $table) {
-            $table->bigIncrements('file_id');
-            $table->string('file_name');
-            $table->integer('folder_id');
+        Schema::create('folder_uploads', function (Blueprint $table) {
+            $table->bigIncrements('folder_id');
+            $table->string('folder_name');
             $table->integer('user_id');
-            $table->integer('file_size');
             $table->integer('soft_delete');
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ class CreateUploadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uploads');
+        Schema::dropIfExists('folder_uploads');
     }
 }

@@ -1,5 +1,5 @@
 @extends('management.layout.app')
-@section('page_title', 'List Files Page')
+@section('page_title', 'Create Files Page')
 @section('body_class', 'home_page')
 
 @section('main_page')
@@ -13,17 +13,16 @@
             <p>Create</p>
         </div>
         <div class="col-md-12">
-            <div class="form-group">
-                <label for="">Choose Folder</label>
-                <select name="" id="" class="form-control">
-                        <option value="">1</option>
-                        <option value="">12</option>
-                        <option value="">2</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <form action="" type="post" enctype="multipart/form-data" class="">
+            <form action="" type="post" method="POST" enctype="multipart/form-data" class="">
+                @csrf
+                <div class="form-group">
+                    <label for="">Choose Folder</label>
+                    <select name="folder" id="" class="form-control">
+                        @foreach ($folders as $folder)
+                            <option value="{{ $folder->folder_id }}">{{ $folder->folder_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="">File Name</label>
                     <input multiple type="file" id="file_upload" class="form-control file-upload" data-bucket="filename" data-filekey="filename" data-url="" name="filename[]" onchange="updateList(this)">
@@ -31,7 +30,7 @@
                 <div id="preview_data">
 
                 </div>
-                <button class="btn btn-danger float-right">Save</button>
+                <button type="submit" name="btn_submit" class="btn btn-danger float-right">Save</button>
             </form>
         </div>
     </div>
